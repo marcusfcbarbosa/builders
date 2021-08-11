@@ -15616,7 +15616,7 @@
     ],
     "CSharpLanguageVersion": 900
   },
-  "RootNamespace": "Builders.Api",
+  "RootNamespace": null,
   "Documents": [],
   "SerializationFormat": "0.2"
 }
