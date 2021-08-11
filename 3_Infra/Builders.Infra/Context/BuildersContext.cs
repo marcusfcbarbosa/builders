@@ -1,4 +1,4 @@
-﻿using Builders.Infra.Context.Documents;
+﻿using Builders.Domain.EntranceTestContext.Documents;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -18,22 +18,19 @@ namespace Builders.Infra.Context
                 _mongoDatabase = mongoClient.GetDatabase(options.Value.DataBase);
             }
         }
-
-
-
-        public IMongoCollection<Palindrome> Palindromes
+        public IMongoCollection<PalindromeDocument> Palindromes
         {
             get
             {
-                return _mongoDatabase.GetCollection<Palindrome>("Palindrome");
+                return _mongoDatabase.GetCollection<PalindromeDocument>("Palindrome");
             }
         }
 
-        public IMongoCollection<Binary> Binaries
+        public IMongoCollection<BinaryDocument> Binaries
         {
             get
             {
-                return _mongoDatabase.GetCollection<Binary>("Binaries");
+                return _mongoDatabase.GetCollection<BinaryDocument>("Binaries");
             }
         }
     }

@@ -2,8 +2,23 @@
 
 
   <ItemGroup>
+	<PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="FluentValidator" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\4_Shared\Builders.Shared\Builders.Shared.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="EntranceTestContext\Adapters\" />
+    <Folder Include="EntranceTestContext\Commands\Output\" />
+    <Folder Include="EntranceTestContext\Models\" />
+    <Folder Include="EntranceTestContext\NewFolder\" />
+    <Folder Include="EntranceTestContext\Repositories\" />
   </ItemGroup>
   
   <PropertyGroup>

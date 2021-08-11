@@ -1,14 +1,16 @@
-﻿namespace Builders.Infra.Context.Documents
+﻿using Builders.Shared.Documents;
+
+namespace Builders.Domain.EntranceTestContext.Documents
 {
-    public class Binary : BaseDocument
+    public class BinaryDocument : BaseDocument
     {
         public long Value { get; private set; }
 
         public string Left { get; private set; }
 
         public string Right { get; private set; }
-        private Binary() { }
-        public Binary(long value, string left, string right) 
+        private BinaryDocument() { }
+        public BinaryDocument(long value, string left, string right) 
             : this()
         {
             Value = value;
