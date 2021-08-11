@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Builders.Infra.Context;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,12 @@ namespace Builders.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.Configure<ConfigDB>(
+                x =>
+                {
+                    x.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
+                    x.DataBase = Configuration.GetSection("MongoConnection:DataBase").Value;
+                });
             services.AddControllers();
             services.AddMediatR(typeof(Startup));
             services.AddSwaggerGen(c =>
