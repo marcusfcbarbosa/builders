@@ -1,15 +1,17 @@
-using Builders.Domain.EntranceTestContext.Handlers;
+using Builders.Api.InfraEstructure;
 using Builders.Domain.EntranceTestContext.Repositories;
 using Builders.Infra.Context;
 using Builders.Infra.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
+using System.Text;
 
 namespace Builders.Api
 {
@@ -34,9 +36,24 @@ namespace Builders.Api
                 });
             services.AddControllers();
             registrandoDependencias(services);
-            services.AddSwaggerGen(c =>
+            DocumentacaoApi(services);
+            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+            services.AddAuthentication(x =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Builders.Api", Version = "v1" });
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
             });
 
         }
@@ -46,29 +63,38 @@ namespace Builders.Api
             services.AddScoped<IBinaryRepository, BinaryRepository>();
             #endregion
 
-            #region"Handlers"
-            services.AddScoped<BinaryHandler, BinaryHandler>();
-            #endregion
 
             #region"mediator"
             services.AddMediatR(Assembly.GetExecutingAssembly());
             #endregion
         }
-
+        public void DocumentacaoApi(IServiceCollection services)
+        {
+            services.AddSwaggerDocumentation();
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Builders.Api v1"));
+                app.UseSwaggerDocumentation();
             }
 
-            app.UseHttpsRedirection();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "swagger");
+            });
 
             app.UseRouting();
 
+            app.UseCors(x => x
+                      .AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader());
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

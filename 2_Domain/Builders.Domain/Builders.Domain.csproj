@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="EntranceTestContext\Adapters\" />
-    <Folder Include="EntranceTestContext\Commands\Output\" />
     <Folder Include="EntranceTestContext\Interfaces\" />
     <Folder Include="EntranceTestContext\Models\" />
     <Folder Include="EntranceTestContext\NewFolder\" />
