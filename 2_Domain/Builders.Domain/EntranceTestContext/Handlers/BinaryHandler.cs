@@ -1,12 +1,11 @@
 ﻿using Builders.Domain.EntranceTestContext.Commands.Input;
 using Builders.Domain.EntranceTestContext.Repositories;
 using Builders.Shared.Commands;
-using FluentValidator;
 using System;
 
 namespace Builders.Domain.EntranceTestContext.Handlers
 {
-    public class BinaryHandler : Notifiable,
+    public class BinaryHandler : 
         ICommandHandler<CriaBinaryCommand>
     {
         private readonly IBinaryRepository _binaryRepository;
