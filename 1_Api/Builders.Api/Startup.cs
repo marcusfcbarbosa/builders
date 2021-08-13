@@ -65,9 +65,7 @@ namespace Builders.Api
             #region"Repositórios"
             services.AddScoped<IBinaryRepository, BinaryRepository>();
             #endregion
-            #region"Handlers"
-            services.AddScoped<BinaryHandler, BinaryHandler>();
-            #endregion
+            
 
             #region"mediator"
             services.AddMediatR(Assembly.GetExecutingAssembly());
