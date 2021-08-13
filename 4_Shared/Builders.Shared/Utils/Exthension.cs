@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Builders.Shared.Utils
 {
-    public static class Util
+    public static class Exthension
     {
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)

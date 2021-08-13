@@ -19,14 +19,18 @@ namespace Builders.Domain.EntranceTestContext.Commands.Input
                 .Requires()
                 .IsNotNull(inputs.ElementAt(i).Value, "Value", "Value é obrigatório")
                 .IsLowerThan(0, inputs.ElementAt(i).Value, "Value", "Value deve ser maior que zero (0)")
+                .IsNotNull(inputs.ElementAt(i).node, "Node", "Node é obrigatório")
+                .IsLowerThan(0, inputs.ElementAt(i).node, "Node", "Node deve ser maior que zero (0)")
                 );
 
                 if (inputs.ElementAtOrDefault(i + 1) != null)
                 {
                     AddNotifications(new ValidationContract()
                     .Requires()
-                    .IsLowerThan(inputs.ElementAt(i).Value, inputs.ElementAt(i + 1).Value, "Value", "Arvore Binaria Invalida")
+                    .IsLowerThan(inputs.ElementAt(i).Value, inputs.ElementAt(i + 1).Value,"Value", "Arvore Binaria Invalida")
+                    .IsLowerThan(inputs.ElementAt(i).node, inputs.ElementAt(i + 1).node, "Node", "Arvore Binaria Invalida")
                     );
+
                 }
             }
 
