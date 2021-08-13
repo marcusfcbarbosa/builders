@@ -1,23 +1,24 @@
 ﻿using Builders.Domain.EntranceTestContext.Commands.Input;
 using Builders.Domain.EntranceTestContext.Repositories;
 using Builders.Shared.Commands;
+using MediatR;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Builders.Domain.EntranceTestContext.Handlers
 {
-    public class BinaryHandler : 
-        ICommandHandler<CriaBinaryCommand>
+    public class BinaryHandler
+        : IRequestHandler<CriaBinaryCommand, ICommandResult>
     {
         private readonly IBinaryRepository _binaryRepository;
         public BinaryHandler(IBinaryRepository binaryRepository)
         {
             _binaryRepository = binaryRepository;
-        }
+        }      
 
-        public ICommandResult Handle(CriaBinaryCommand command)
+        public Task<ICommandResult> Handle(CriaBinaryCommand request, CancellationToken cancellationToken)
         {
-            //implemento os paranaue aqui
-
             throw new NotImplementedException();
         }
     }

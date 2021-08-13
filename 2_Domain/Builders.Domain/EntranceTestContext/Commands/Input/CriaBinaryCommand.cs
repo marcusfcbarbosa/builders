@@ -23,12 +23,12 @@ namespace Builders.Domain.EntranceTestContext.Commands.Input
             }
         }
     }
-    
+
     public class Request
     {
-        
-        public int Value { get;  set; }
-        public string Left { get;  set; }
-        public string Right { get;  set; }
+
+        public int Value { get; set; }
+        public string Left { get; set; }
+        public string Right { get; set; }
     }
 }

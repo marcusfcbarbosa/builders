@@ -1,4 +1,6 @@
 using Builders.Api.InfraEstructure;
+using Builders.Domain.EntranceTestContext.Commands.Input;
+using Builders.Domain.EntranceTestContext.Handlers;
 using Builders.Domain.EntranceTestContext.Repositories;
 using Builders.Infra.Context;
 using Builders.Infra.Repositories;
@@ -35,6 +37,7 @@ namespace Builders.Api
                     x.DataBase = Configuration.GetSection("MongoConnection:DataBase").Value;
                 });
             services.AddControllers();
+            
             registrandoDependencias(services);
             DocumentacaoApi(services);
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
@@ -62,10 +65,13 @@ namespace Builders.Api
             #region"Repositórios"
             services.AddScoped<IBinaryRepository, BinaryRepository>();
             #endregion
-
+            #region"Handlers"
+            services.AddScoped<BinaryHandler, BinaryHandler>();
+            #endregion
 
             #region"mediator"
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(CriaBinaryCommand).GetTypeInfo().Assembly);
             #endregion
         }
         public void DocumentacaoApi(IServiceCollection services)

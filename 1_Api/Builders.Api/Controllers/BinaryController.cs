@@ -28,7 +28,7 @@ namespace Builders.Api.Controllers
             catch (Exception ex)
             {
 
-                return new CommandResult(false, "", StatusCodes.Status500InternalServerError);
+                return new CommandResult(false, ex.Message, StatusCodes.Status500InternalServerError);
             }
 
         }
