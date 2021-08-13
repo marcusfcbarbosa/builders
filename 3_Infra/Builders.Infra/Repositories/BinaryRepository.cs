@@ -17,10 +17,17 @@ namespace Builders.Infra.Repositories
         }
         public async Task CreateAsync(BinaryDocument document)
         {
-            document.id= Guid.NewGuid();
-            await _buildersContext.Binaries.InsertOneAsync(document);
+            try {
+                document.id = Guid.NewGuid();
+                await _buildersContext.Binaries.InsertOneAsync(document);
+
+            } catch (Exception ex) { 
+            
+                string erro = ex.Message;
+            }
+            
         }
 
-        
+
     }
 }

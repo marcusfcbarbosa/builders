@@ -3,6 +3,7 @@ using FluentValidator;
 using FluentValidator.Validation;
 using MediatR;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Builders.Domain.EntranceTestContext.Commands.Input
 {
@@ -12,21 +13,29 @@ namespace Builders.Domain.EntranceTestContext.Commands.Input
 
         public void Validate()
         {
-            foreach (var item in inputs)
+            for (int i = 0; i < inputs.Count(); i++)
             {
                 AddNotifications(new ValidationContract()
-                 .Requires()
-                 .IsNotNull(item.Value, "Value", "Value é obrigatório")
-                 .IsLowerThan(0, item.Value, "Value", "Value deve ser maior que zero (0)")
-             );
+                .Requires()
+                .IsNotNull(inputs.ElementAt(i).Value, "Value", "Value é obrigatório")
+                .IsLowerThan(0, inputs.ElementAt(i).Value, "Value", "Value deve ser maior que zero (0)")
+                );
 
+                if (inputs.ElementAtOrDefault(i + 1) != null)
+                {
+                    AddNotifications(new ValidationContract()
+                    .Requires()
+                    .IsLowerThan(inputs.ElementAt(i).Value, inputs.ElementAt(i + 1).Value, "Value", "Arvore Binaria Invalida")
+                    );
+                }
             }
+
         }
     }
 
     public class Request
     {
-
+        public int node { get; set; }
         public int Value { get; set; }
         public string Left { get; set; }
         public string Right { get; set; }

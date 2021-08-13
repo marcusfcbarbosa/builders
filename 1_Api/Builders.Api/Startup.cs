@@ -1,6 +1,5 @@
 using Builders.Api.InfraEstructure;
 using Builders.Domain.EntranceTestContext.Commands.Input;
-using Builders.Domain.EntranceTestContext.Handlers;
 using Builders.Domain.EntranceTestContext.Repositories;
 using Builders.Infra.Context;
 using Builders.Infra.Repositories;
