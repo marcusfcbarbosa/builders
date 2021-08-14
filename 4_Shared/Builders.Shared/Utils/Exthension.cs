@@ -12,7 +12,10 @@ namespace Builders.Shared.Utils
                 action(element);
         }
         
-
+        public static bool GuidIsEmpty(this Guid id)
+        {
+            return id == Guid.Empty;
+        }
         public static string reverseString(this string Word)
         {
             char[] arrChar = Word.ToCharArray();

@@ -1,4 +1,5 @@
 ﻿using Builders.Shared.Queries;
+using Builders.Shared.Utils;
 using FluentValidator;
 using FluentValidator.Validation;
 using MediatR;
@@ -15,7 +16,7 @@ namespace Builders.Domain.EntranceTestContext.Queries
             AddNotifications(new ValidationContract()
                 .Requires()
                  .IsLowerThan(0, Valor, "Valor", "Valor deve ser maior que zero (0)")
-                 .IsFalse(id==Guid.Empty, id.ToString(),"id deve estar preenchido")
+                 .IsFalse(id.GuidIsEmpty(), id.ToString(),"id deve estar preenchido")
                 );
         }
     }
