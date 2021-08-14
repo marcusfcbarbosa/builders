@@ -27,7 +27,7 @@ namespace Builders.Api.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IQueryResult> Get([FromServices] IMediator mediator, [FromBody] BinaryReadQuery query)
+        public async Task<IQueryResult> Get([FromServices] IMediator mediator, [FromQuery] BinaryReadQuery query)
         {
             query.Validate();
             if (query.Valid)

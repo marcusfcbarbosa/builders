@@ -27,5 +27,10 @@ namespace Builders.Infra.Repositories
         {
             return await _buildersContext.Binaries.Find(_ => true).ToListAsync();
         }
+
+        public async Task<BinaryDocument> GetById(Guid id)
+        {
+            return await _buildersContext.Binaries.Find(_ => true && _.id== id).FirstOrDefaultAsync();
+        }
     }
 }

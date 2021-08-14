@@ -8,6 +8,8 @@ namespace Builders.Shared.Interfaces
     {
         Task CreateAsync(TEntity entity);
 
+        Task<TEntity> GetById(Guid id);
+
         Task<IEnumerable<TEntity>> GetAll();
 
     }

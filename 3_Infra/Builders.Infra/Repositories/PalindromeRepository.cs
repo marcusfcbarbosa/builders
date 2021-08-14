@@ -4,8 +4,6 @@ using Builders.Infra.Context;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Builders.Infra.Repositories
@@ -24,6 +22,11 @@ namespace Builders.Infra.Repositories
         }
 
         public Task<IEnumerable<PalindromeDocument>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<PalindromeDocument> GetById(Guid id)
         {
             throw new NotImplementedException();
         }

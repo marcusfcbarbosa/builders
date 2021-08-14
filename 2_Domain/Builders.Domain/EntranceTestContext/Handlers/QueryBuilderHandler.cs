@@ -4,6 +4,7 @@ using Builders.Domain.EntranceTestContext.Repositories;
 using Builders.Shared.Queries;
 using MediatR;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,10 +21,11 @@ namespace Builders.Domain.EntranceTestContext.Handlers
             _binaryRepository = binaryRepository;
         }
 
-        public Task<IQueryResult> Handle(BinaryReadQuery request, CancellationToken cancellationToken)
+        public async Task<IQueryResult> Handle(BinaryReadQuery request, CancellationToken cancellationToken)
         {
-            //aqui retorno um no da lista
-            throw new NotImplementedException();
+            var document = await _binaryRepository.GetById(request.id);
+            var node = document.three.Where(x => x.Value == request.Valor).FirstOrDefault().Node;
+            return await Task.FromResult(new QueryResult(true, "", node));
         }
         public async Task<IQueryResult> Handle(BinaryReadAllQuery request, CancellationToken cancellationToken)
         {
