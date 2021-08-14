@@ -2,6 +2,7 @@
 using Builders.Domain.EntranceTestContext.Repositories;
 using Builders.Infra.Context;
 using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using System;
 using System.Threading.Tasks;
 

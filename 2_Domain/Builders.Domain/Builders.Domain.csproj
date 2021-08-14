@@ -11,13 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\4_Shared\Builders.Shared\Builders.Shared.csproj" />
   </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="EntranceTestContext\Interfaces\" />
-    <Folder Include="EntranceTestContext\Models\" />
-    <Folder Include="EntranceTestContext\NewFolder\" />
-  </ItemGroup>
   
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
