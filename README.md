@@ -10,4 +10,7 @@
 # para executar a consulta, simplemente set a aplicação API , como sendo a principal
 # ESPERO PODER TER CAUSADO UMA BOA IMPRESSAO =)
 
+# para acesso a base de dados MongoDB, fiz uso do (https://account.mongodb.com/account/login?n=%2Fv2%2F5e8e1d6531484706094f6614&nextHash=%23clusters)
+# o acesso a mesma esta habiltiado para qualquer IP, caso tenha algum problema me de um retorno, que tento reestabelecer comunicação
+
 # https://github.com/marcusfcbarbosa 
