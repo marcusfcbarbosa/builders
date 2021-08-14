@@ -10,12 +10,12 @@ namespace Builders.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BinaryController : ControllerBase
+    public class BinaryController : BaseController
     {
 
         [HttpPost]
         [Route("")]
-        [Authorize]
+        
         public async Task<ICommandResult> Create([FromServices] IMediator mediator, [FromBody] CriaBinaryCommand command)
         {
             command.Validate();

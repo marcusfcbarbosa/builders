@@ -30,10 +30,8 @@ namespace Builders.Domain.EntranceTestContext.Commands.Input
                     .IsLowerThan(inputs.ElementAt(i).Value, inputs.ElementAt(i + 1).Value,"Value", "Arvore Binaria Invalida")
                     .IsLowerThan(inputs.ElementAt(i).node, inputs.ElementAt(i + 1).node, "Node", "Arvore Binaria Invalida")
                     );
-
                 }
             }
-
         }
     }
 

@@ -10,11 +10,10 @@ namespace Builders.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PalindromeController : ControllerBase
+    public class PalindromeController : BaseController
     {
         [HttpPost]
         [Route("")]
-        [Authorize]
         public async Task<ICommandResult> Create([FromServices] IMediator mediator, [FromBody] CriaPalindromeCommand command)
         {
             command.Validate();
