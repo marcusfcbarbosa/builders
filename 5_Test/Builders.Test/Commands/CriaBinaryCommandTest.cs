@@ -47,6 +47,5 @@ namespace Builders.Test.Commands
         {
             Assert.AreEqual(_validCommand.Valid, true);
         }
-
     }
 }
