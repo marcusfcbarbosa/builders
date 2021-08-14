@@ -13,7 +13,6 @@ namespace Builders.Api.Controllers
     [ApiController]
     public class BinaryController : BaseController
     {
-
         [HttpPost]
         [Route("")]
         public async Task<ICommandResult> Create([FromServices] IMediator mediator, [FromBody] CriaBinaryCommand command)

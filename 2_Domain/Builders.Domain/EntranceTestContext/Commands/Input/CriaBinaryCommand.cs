@@ -9,6 +9,12 @@ namespace Builders.Domain.EntranceTestContext.Commands.Input
 {
     public class CriaBinaryCommand : Notifiable, ICommand, IRequest<ICommandResult>
     {
+
+        public CriaBinaryCommand() { }
+        public CriaBinaryCommand(IEnumerable<Request> inputs)
+        {
+            this.inputs = inputs;
+        }
         public IEnumerable<Request> inputs { get; set; }
 
         public void Validate()

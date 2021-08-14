@@ -7,6 +7,7 @@ namespace Builders.Domain.EntranceTestContext.Commands.Input
 {
     public class CriaPalindromeCommand : Notifiable, ICommand, IRequest<ICommandResult>
     {
+        
         public string Valor { get;  set; }
         public void Validate()
         {
