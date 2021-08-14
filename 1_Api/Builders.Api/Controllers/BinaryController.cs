@@ -2,6 +2,7 @@
 using Builders.Domain.EntranceTestContext.Commands.Output;
 using Builders.Shared.Commands;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace Builders.Api.Controllers
 
         [HttpPost]
         [Route("")]
+        [Authorize]
         public async Task<ICommandResult> Create([FromServices] IMediator mediator, [FromBody] CriaBinaryCommand command)
         {
             command.Validate();
