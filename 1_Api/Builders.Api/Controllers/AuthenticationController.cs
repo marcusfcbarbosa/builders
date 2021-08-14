@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Builders.Api.Controllers
@@ -16,7 +14,6 @@ namespace Builders.Api.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-
         [HttpPost("")]
         [AllowAnonymous]
         public async Task<ICommandResult> Post([FromBody] AuthenticationCommand command)
