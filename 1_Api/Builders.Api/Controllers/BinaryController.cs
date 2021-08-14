@@ -24,7 +24,7 @@ namespace Builders.Api.Controllers
             return new CommandResult(false, "Erros", command.Notifications);
         }
 
-        
+
         [HttpGet]
         [Route("")]
         public async Task<IQueryResult> Get([FromServices] IMediator mediator, [FromBody] BinaryReadQuery query)
@@ -37,12 +37,10 @@ namespace Builders.Api.Controllers
 
         [HttpGet]
         [Route("getAll")]
-        public async Task<IQueryResult> GetAll([FromServices] IMediator mediator, [FromBody] BinaryReadAllQuery query)
+        public async Task<IQueryResult> GetAll([FromServices] IMediator mediator)
         {
-            query.Validate();
-            if (query.Valid)
-                return await mediator.Send(query);
-            return new QueryResult(false, "Erros", query.Notifications);
+            var query = new BinaryReadAllQuery();
+            return await mediator.Send(query);
         }
 
     }

@@ -4,6 +4,7 @@ using Builders.Infra.Context;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Builders.Infra.Repositories
@@ -20,6 +21,11 @@ namespace Builders.Infra.Repositories
         {
             document.id = Guid.NewGuid();
             await _buildersContext.Binaries.InsertOneAsync(document);
+        }
+
+        public async Task<IEnumerable<BinaryDocument>> GetAll()
+        {
+            return await _buildersContext.Binaries.Find(_ => true).ToListAsync();
         }
     }
 }

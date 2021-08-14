@@ -22,5 +22,10 @@ namespace Builders.Infra.Repositories
             document.id = Guid.NewGuid();
             await _buildersContext.Palindromes.InsertOneAsync(document);
         }
+
+        public Task<IEnumerable<PalindromeDocument>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
