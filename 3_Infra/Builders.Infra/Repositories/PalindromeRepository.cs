@@ -3,22 +3,24 @@ using Builders.Domain.EntranceTestContext.Repositories;
 using Builders.Infra.Context;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Builders.Infra.Repositories
 {
-    public class BinaryRepository : IBinaryRepository
+    public class PalindromeRepository : IPalindromeRepository
     {
-
         private readonly BuildersContext _buildersContext;
-        public BinaryRepository(IOptions<ConfigDB> options)
+        public PalindromeRepository(IOptions<ConfigDB> options)
         {
             _buildersContext = new BuildersContext(options);
         }
-        public async Task CreateAsync(BinaryDocument document)
+        public async Task CreateAsync(PalindromeDocument document)
         {
             document.id = Guid.NewGuid();
-            await _buildersContext.Binaries.InsertOneAsync(document);
+            await _buildersContext.Palindromes.InsertOneAsync(document);
         }
     }
 }

@@ -9,12 +9,11 @@ namespace Builders.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BinaryController : ControllerBase
+    public class PalindromeController : ControllerBase
     {
-
         [HttpPost]
         [Route("")]
-        public async Task<ICommandResult> Create([FromServices] IMediator mediator, [FromBody] CriaBinaryCommand command)
+        public async Task<ICommandResult> Create([FromServices] IMediator mediator, [FromBody] CriaPalindromeCommand command)
         {
             command.Validate();
             if (command.Valid)

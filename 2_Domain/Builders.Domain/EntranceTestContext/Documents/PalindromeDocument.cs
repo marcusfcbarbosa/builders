@@ -9,7 +9,8 @@ namespace Builders.Domain.EntranceTestContext.Documents
         public bool EhPalindrome { get; private set; }
 
         private PalindromeDocument() { }
-        public PalindromeDocument(string valor, bool ehPalindrome):this()
+        public PalindromeDocument(string valor, bool ehPalindrome):
+            this()
         {
             Valor = valor;
             EhPalindrome = ehPalindrome;

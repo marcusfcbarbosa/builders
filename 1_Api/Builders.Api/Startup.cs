@@ -63,8 +63,9 @@ namespace Builders.Api
         {
             #region"Repositórios"
             services.AddScoped<IBinaryRepository, BinaryRepository>();
+            services.AddScoped<IPalindromeRepository, PalindromeRepository>();
             #endregion
-            
+
 
             #region"mediator"
             services.AddMediatR(Assembly.GetExecutingAssembly());
