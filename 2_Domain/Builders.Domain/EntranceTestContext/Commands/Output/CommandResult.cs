@@ -4,6 +4,9 @@ namespace Builders.Domain.EntranceTestContext.Commands.Output
 {
     public class CommandResult : ICommandResult
     {
+        public bool Success { get; set; }
+        public string Message { get; set; }
+        public object Data { get; set; }
 
         public CommandResult(bool success, string message, object data)
         {
@@ -11,9 +14,6 @@ namespace Builders.Domain.EntranceTestContext.Commands.Output
             Message = message;
             Data = data;
         }
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public object Data { get; set; }
-
+        
     }
 }

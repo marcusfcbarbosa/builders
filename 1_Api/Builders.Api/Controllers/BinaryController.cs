@@ -15,7 +15,8 @@ namespace Builders.Api.Controllers
     {
         [HttpPost]
         [Route("")]
-        public async Task<ICommandResult> Create([FromServices] IMediator mediator, [FromBody] CriaBinaryCommand command)
+        public async Task<ICommandResult> Create([FromServices] IMediator mediator,
+                                                 [FromBody] CriaBinaryCommand command)
         {
             command.Validate();
             if (command.Valid)
